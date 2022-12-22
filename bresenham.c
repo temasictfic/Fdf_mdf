@@ -4,9 +4,10 @@ void iso(t_point *p, t_mlx *mlx)
 {
     double angle;
 
+    (void)mlx;
     angle = M_PI * 30 / 180;
     p->x = (p->x - p->y) * cos(angle);
-    p->y = (-p->z * mlx->center.z) + (p->x + p->y) * sin(angle);
+    p->y = -p->z + (p->x + p->y) * sin(angle);
 }
 
 void apply_projection(t_point *p1, t_point *p2, t_mlx *mlx, int flag)
@@ -37,8 +38,8 @@ void bresenham(t_point p1, t_point p2, t_mlx *mlx)
     int e2;
 
     apply_projection(&p1, &p2, mlx, mlx->center.projection);
-    dx = fabs(p2.x-p1.x);
-    dy = -fabs(p2.y-p1.y);
+    dx = abs(p2.x-p1.x);
+    dy = -abs(p2.y-p1.y);
     err = dx + dy;
     while (1)
     {

@@ -1,7 +1,7 @@
 #ifndef FDF_H
 # define FDF_H
 
-//#include "minilibx_macos/mlx.h"
+#include "minilibx_macos/mlx.h"
 #include "gnl/get_next_line.h"
 #include <math.h>
 #include <errno.h>
@@ -28,7 +28,7 @@
  #define COLOR_HIGH 0xff8000
 #endif
 
-#define DEFAULT_COLOR "0xff8000"
+#define DEFAULT_COLOR 0xff8000
 
 #define MLX_ERR "Mlx Error!"
 #define IMG_ERR "Image Initialization Error!"
@@ -138,6 +138,21 @@ long int	ft_atoi(const char *str);
 unsigned int	ft_atoi_hex(char *str);
 
 t_map	*parse_map_file(char *fdf_file);
+int		is_on_screen(int x, int y);
+int		get_color(t_point point1, t_point point2);
+void	get_map_center(t_mlx *mlx);
+void exit_with_msg(char *str);
+
+void map_translate (t_mlx *mlx, double x, double y, double z);
+void	draw(t_mlx *mlx);
+void map_scale(t_mlx *mlx, double scale);
+void map_rotate(t_mlx *mlx, double angle, char axis);
+void	destroy_img(t_mlx *mlx);
+void	init_img(t_mlx *mlx);
+void bresenham(t_point p1, t_point p2, t_mlx *mlx);
+void	control_events(t_mlx *mlx);
+void mlx_free(t_mlx *mlx);
+t_mlx *init_mlx(t_map *map);
 
 /*
 // Initialization

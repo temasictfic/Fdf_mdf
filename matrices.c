@@ -7,7 +7,7 @@ void matrice_multiply(t_matrice *m, t_mlx *mlx)
     int     x;
     int     y;
 
-    tmp = NULL;
+    tmp = malloc(sizeof(t_point));
     y = 0;
     while (y < mlx->map->height)
     {
@@ -29,6 +29,7 @@ void matrice_multiply(t_matrice *m, t_mlx *mlx)
         }
         y++;
     }
+    free(tmp);
 }
 
 /*
@@ -57,10 +58,7 @@ p->z = tmp->z;
      {0,     0,     0,       1}};
 
 */
-void translate(t_mlx *mlx, double x, double y, double z)
-{
 
-}
 void map_translate (t_mlx *mlx, double x, double y, double z)
 {
     t_matrice *transition_m;

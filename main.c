@@ -37,30 +37,10 @@ int main(int argc, char** argv)
         exit_with_msg(USG_ERR);
     map = parse_map_file(argv[1]);
     mlx = init_mlx(map);
+    init_img(mlx);
     draw(mlx);
-    controls_events(mlx);
+    control_events(mlx);
     mlx_loop(mlx->mlx);
-    
-
-
-
-    int row = 0;
-    //int col = 0;
-    while (row < 34)
-    {   
-        //free(map[row]);
-        /*
-        col = 0;
-        while(col<27)
-        {
-            
-            //printf("%d  %d  %d  %d\n", map[row][col].x, map[row][col].y, map[row][col].z, map[row][col].color);
-            col++;
-        }*/
-        row++;
-    }
-    free(map);
-    system("leaks a.out");
 }
 
 
@@ -86,13 +66,13 @@ int main(int argc, char** argv)
     while (row < 34)
     {   
         
-        /*col = 0;
+        col = 0;
         while(col<27)
         {
             //free(map.lines->points);
             //printf("%d  %d  %d  %d\n", map[row][col].x, map[row][col].y, map[row][col].z, map[row][col].color);
             col++;
-        }//*
+        }
         row++;
     }
     //free(map.lines->points);

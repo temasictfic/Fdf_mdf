@@ -12,25 +12,26 @@ t_line	**increase_row_num(t_line **lines, int row)
 
 t_point *fill_point(char *point_str, int row, int col)
 {
-    t_point p;
+    t_point *p;
     char **z_and_color;
     int i;
     
+    p = malloc(sizeof(t_point));
     i = count_words(point_str, ',');
     z_and_color = split_with_num(point_str, ',', i); // #line içinde freele
     free(point_str);
-    p.x = col;
-    p.y = row;
-    p.z = ft_atoi(z_and_color[0]);
-    p.color = 0xFF8000;
+    p->x = col;
+    p->y = row;
+    p->z = ft_atoi(z_and_color[0]);
+    p->color = 0xFF8000;
     if (i == 2)
     {
-        p.color = ft_atoi_hex(z_and_color[1] + 2);
+        p->color = ft_atoi_hex(z_and_color[1] + 2);
         free(z_and_color[1]);
     }
     free(z_and_color[0]);
     free(z_and_color);
-    return (&p);
+    return (p);
 }
 
 t_line	*parse_map_file_line(char *line, int row)

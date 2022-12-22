@@ -2,7 +2,7 @@
 
 int	escape_hook(t_mlx *mlx)
 {
-	env_free(mlx);
+	mlx_free(mlx);
 	exit(EXIT_SUCCESS);
 }
 
@@ -10,7 +10,7 @@ int		key_hook(int keycode, t_mlx *mlx)
 {
 	if (keycode == KEY_ESC)
 	{
-		env_free(mlx);
+		mlx_free(mlx);
 		exit(0);
 	}
 	else if (keycode == KEY_SPACE)
@@ -86,3 +86,13 @@ int		mouse_move_hook(int x, int y, t_mlx *mlx)
 	return (0);
 }
 
+void	control_events(t_mlx *mlx)
+{
+	mlx_hook(mlx->window, EVENT_ON_KEYDOWN, NO_MASK, key_hook, mlx);
+	mlx_hook(mlx->window, EVENT_ON_DESTROY, NO_MASK, escape_hook, mlx);
+	mlx_hook(mlx->window, EVENT_ON_MOUSEDOWN, NO_MASK, mouse_down_hook, mlx);
+	mlx_hook(mlx->window, EVENT_ON_MOUSEMOVE, NO_MASK, mouse_move_hook, mlx);
+	mlx_hook(mlx->window, EVENT_ON_MOUSEUP, NO_MASK, mouse_up_hook, mlx);
+	init_img(mlx);
+	draw(mlx);
+}
