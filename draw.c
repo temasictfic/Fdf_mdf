@@ -12,8 +12,6 @@ void	draw(t_mlx *mlx)
 	int	x;
 	int	y;
 
-	
-	//init_img(mlx);
 	y = 0;
 	while (mlx->map->height > y)
 	{
@@ -30,5 +28,4 @@ void	draw(t_mlx *mlx)
 	}
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img, 0, 0);
 	destroy_img(mlx);
-
 }

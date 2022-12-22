@@ -4,7 +4,7 @@ RM = rm -f
 #-O3 -Ofast -flto -march=native
 NAME = fdf
 LIBS = -Lminilibx_macos -lmlx -lm -framework OpenGL -framework AppKit
-SRCS = bresenham.c events.c draw.c init.c main.c matrices.c mlx_utils.c parse_map.c utils*.c gnl/*.c
+SRCS = bresenham.c events.c draw.c main.c matrices.c mlx_utils.c parse_map.c utils*.c gnl/*.c
 
 
 all: ${NAME}

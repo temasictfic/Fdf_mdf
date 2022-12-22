@@ -153,6 +153,7 @@ void bresenham(t_point p1, t_point p2, t_mlx *mlx);
 void	control_events(t_mlx *mlx);
 void mlx_free(t_mlx *mlx);
 t_mlx *init_mlx(t_map *map);
+void	init_map_transform(t_mlx *mlx);
 
 /*
 // Initialization
