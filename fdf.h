@@ -61,6 +61,7 @@
 #define KEY_ARROWUP 126
 #define KEY_ARROWDOWN 125
 // Zoom +-
+#define KEY_P 35
 #define KEY_I 34
 #define KEY_O 31
 // Raise Z, Lower Z
@@ -82,6 +83,22 @@ typedef struct s_point
     int color;
 }   t_point;
 
+typedef struct s_mouse
+{
+    int x;
+    int y;
+    int clicked;
+}   t_mouse;
+
+typedef struct s_center
+{
+    int x;
+    int y;
+    int z;
+    int projection;
+    double angle;
+}   t_center;
+
 typedef struct	s_line {
 	t_point	**points;
 	int		width;
@@ -99,12 +116,20 @@ typedef struct s_mlx
     void    *img;
     void    *img_addr;
     t_map   *map;
-    t_point mouse;
-    t_point center;
+    t_mouse mouse;
+    t_center center;
     int bits_per_pixel;
     int line_length;
     int endian;
 }       t_mlx;
+
+typedef struct	s_matrice {
+
+	double a[4];
+	double b[4];
+	double c[4];
+	double d[4];
+}               t_matrice;
 
 char	**split_with_num(char const *str, char c, int num);
 unsigned int	count_words(const char *str, char sep);

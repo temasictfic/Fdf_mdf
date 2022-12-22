@@ -1,9 +1,9 @@
 #include "fdf.h"
 
-int		is_on_screen(t_point point)
+int		is_on_screen(int x, int y)
 {
-	return (point.x <= WIN_WIDTH + 100 && point.x > 0 &&
-		point.y <= WIN_HEIGHT + 100 && point.y > 0);
+	return (x <= WIN_WIDTH + PAD && x > 0 &&
+		y <= WIN_HEIGHT + PAD && y > 0);
 }
 
 int		get_color(t_point point1, t_point point2)
@@ -55,7 +55,7 @@ int		max_width_index(t_line **lines, int y_last_index)
 
 void	get_map_center(t_mlx *mlx)
 {
-	t_point	center;
+	t_center	center;
 	int		x_max;
 	int		max_line_index;
 	int		y_last_index;
