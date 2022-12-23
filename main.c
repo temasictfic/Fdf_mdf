@@ -30,21 +30,34 @@ void mlx_free(t_mlx *mlx)
 
 int main(int argc, char** argv)
 {
-    t_map *map;
     t_mlx *mlx;
+    int y = 0;
+    int x = 0;
 
     if (argc != 2)
         exit_with_msg(USG_ERR);
     mlx = malloc(sizeof(t_mlx));
-    map = parse_map_file(argv[1]);
-    mlx->map = map;
     mlx->mlx = mlx_init();
-    mlx->window = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "Fdf");
-    init_map_transform(mlx);
-    mlx->img = mlx_new_image(mlx->mlx, WIN_WIDTH + PAD, WIN_HEIGHT + PAD);
-    mlx->img_addr = mlx_get_data_addr(mlx->img, &(mlx->bits_per_pixel), &(mlx->line_length), &(mlx->endian));    
-    control_events(mlx);
-    mlx_loop(mlx->mlx);
+    mlx->map = parse_map_file(argv[1]);
+    //mlx->window = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "Fdf");
+    
+    while(mlx->map->height > y)
+    {
+        x = 0;
+        while (mlx->map->lines[y]->width > x)
+        {
+            printf("%15d", mlx->map->lines[y]->points[x]->color);
+            x++;
+        }
+        printf("\n");
+        y++;
+    }
+    
+    //printf("SSSSSSSS");
+    //init_map_transform(mlx);
+    //draw(mlx);   
+    //control_events(mlx);
+    //mlx_loop(mlx->mlx);
     return (0);
 }
 

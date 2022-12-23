@@ -53,7 +53,7 @@ unsigned int	count_words(const char *str, char sep)
         return(count);
 	while (*str)
 	{
-		if (*str == sep)
+		if (*str == sep || *str == '\n')
 			str++;
 		else
 		{

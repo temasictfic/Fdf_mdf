@@ -1,3 +1,35 @@
+#include "fdf.h"
+
+void init_img(t_mlx *mlx)
+{
+    mlx->img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
+    mlx->img_addr = mlx_get_data_addr(mlx->img, &(mlx->bits_per_pixel), &(mlx->line_length), &(mlx->endian));
+    if (!mlx->img_addr)
+		exit_with_msg(IMG_ERR);
+}
+
+void	init_map_transform(t_mlx *mlx)
+{
+	int		width;
+	int		height;
+	double	scale;
+
+	get_map_center(mlx);
+	width = WIN_WIDTH / 2;
+	height = WIN_HEIGHT / 2;
+	if (mlx->center.x == 0)
+		mlx->center.x = 10;
+	mlx->mouse.clicked = 0;
+	mlx->mouse.x = mlx->center.x;
+	mlx->mouse.y =  mlx->center.y;
+	mlx->center.projection = 1;
+    mlx->center.z = 1;
+	scale = (width - 600) / (mlx->center.x);
+	map_translate(mlx, width - mlx->center.x, height - mlx->center.y, 0);
+	map_scale(mlx, scale);
+}
+
+
 /*#include "fdf.h"
 
 t_mlx *init_mlx(t_map *map)

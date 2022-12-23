@@ -96,7 +96,7 @@ typedef struct s_center
     int y;
     int z;
     int projection;
-    double angle;
+    //double angle;
 }   t_center;
 
 typedef struct	s_line {
@@ -139,7 +139,7 @@ unsigned int	ft_atoi_hex(char *str);
 
 t_map	*parse_map_file(char *fdf_file);
 int		is_on_screen(int x, int y);
-int		get_color(t_point point1, t_point point2);
+int		get_color(t_point *point1, t_point *point2);
 void	get_map_center(t_mlx *mlx);
 void exit_with_msg(char *str);
 
@@ -149,10 +149,10 @@ void map_scale(t_mlx *mlx, double scale);
 void map_rotate(t_mlx *mlx, double angle, char axis);
 void	destroy_img(t_mlx *mlx);
 void	init_img(t_mlx *mlx);
-void bresenham(t_point p1, t_point p2, t_mlx *mlx);
+void bresenham(t_point *p1, t_point *p2, t_mlx *mlx);
 void	control_events(t_mlx *mlx);
 void mlx_free(t_mlx *mlx);
-t_mlx *init_mlx(t_map *map);
+//t_mlx *init_mlx(t_map *map);
 void	init_map_transform(t_mlx *mlx);
 
 /*

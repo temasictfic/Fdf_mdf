@@ -22,14 +22,17 @@ t_point *fill_point(char *point_str, int row, int col)
     free(point_str);
     p->x = col;
     p->y = row;
-    p->z = ft_atoi(z_and_color[0]);
+    if (i==1)
+    {
+        p->z = ft_atoi(z_and_color[0]);
+        free(z_and_color[0]);
+    }
     p->color = 0xFF8000;
     if (i == 2)
     {
         p->color = ft_atoi_hex(z_and_color[1] + 2);
         free(z_and_color[1]);
     }
-    free(z_and_color[0]);
     free(z_and_color);
     return (p);
 }
