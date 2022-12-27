@@ -1,13 +1,15 @@
 #include "fdf.h"
+
+
 // free tmp?
 void matrice_multiply(t_matrice *m, t_mlx *mlx)
 {
     t_point *p;
-    //t_point *tmp;
+    t_point *tmp;
     int     x;
     int     y;
 
-   // tmp = malloc(sizeof(t_point));
+    tmp = malloc(sizeof(t_point));
     y = 0;
     while (y < mlx->map->height)
     {
@@ -15,21 +17,21 @@ void matrice_multiply(t_matrice *m, t_mlx *mlx)
         while (x < (mlx->map->lines[y]->width))
         {
             p = mlx->map->lines[y]->points[x];
-            p->x -= mlx->center.x;
-            p->y -= mlx->center.y;
-            p->x = p->x * m->a[0] + p->y * m->a[1] + p->z * m->a[2] + m->a[3] * 1;
-            p->y = p->x * m->b[0] + p->y * m->b[1] + p->z * m->b[2] + m->b[3] * 1;
-            p->z = p->x * m->c[0] + p->y * m->c[1] + p->z * m->c[2] + m->c[3] * 1;
-            p->x += mlx->center.x;
-            p->y += mlx->center.y;
-            //p->x = tmp->x;
-            //p->y = tmp->y;
-            //p->z = tmp->z;
+            //p->x -= mlx->center.x;
+            //p->y -= mlx->center.y;
+            tmp->x = p->x;
+            tmp->y = p->y;
+            tmp->z = p->z;
+            p->x = tmp->x * m->a[0] + tmp->y * m->a[1] + tmp->z * m->a[2] + m->a[3] * 1;
+            p->y = tmp->x * m->b[0] + tmp->y * m->b[1] + tmp->z * m->b[2] + m->b[3] * 1;
+            p->z = tmp->x * m->c[0] + tmp->y * m->c[1] + tmp->z * m->c[2] + m->c[3] * 1;
+            //p->x += mlx->center.x;
+            //p->y += mlx->center.y;
             x++;
         }
         y++;
     }
-    //free(tmp);
+    free(tmp);
 }
 
 /*

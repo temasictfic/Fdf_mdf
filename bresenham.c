@@ -20,16 +20,22 @@ void apply_projection(t_point *p1, t_point *p2, t_mlx *mlx, int projection)
 
 void put_pixel(t_mlx *mlx, int x, int y, int color)
 {
-    char *img_addr;
-    int x_off;
-    int y_off;
+    //char *img_addr;
+    int i;
+    //int x_off;
+    //int y_off;
 
-    x_off = x + WIN_WIDTH/2;
-    y_off = y + WIN_HEIGHT/2;
-    if(x_off > 0 && y_off >= 0 && x_off < WIN_WIDTH && y_off < WIN_HEIGHT)
+    //x_off = x + WIN_WIDTH/2;
+    //y_off = y + WIN_HEIGHT/2;
+    if(x >= 0 && y >= 0 && x < WIN_WIDTH && y < WIN_HEIGHT)
     {
-        img_addr = mlx->img_addr + (y_off * mlx->line_length + x_off * (mlx->bits_per_pixel / 8));
-        *(unsigned int *)img_addr = color;
+        i = (y * mlx->line_length + (x * mlx->bits_per_pixel / 8));
+        mlx->img_addr[i] = color;
+        mlx->img_addr[++i] = color >> 8;
+        mlx->img_addr[++i] = color >> 16;
+
+
+        //*(unsigned int *)img_addr = color;
     }
 }
 

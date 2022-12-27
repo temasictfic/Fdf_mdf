@@ -114,7 +114,7 @@ typedef struct s_mlx
     void    *mlx;
     void    *window;
     void    *img;
-    void    *img_addr;
+    char    *img_addr;
     t_map   *map;
     t_mouse mouse;
     t_center center;
@@ -149,6 +149,7 @@ void map_scale(t_mlx *mlx, double scale);
 void map_rotate(t_mlx *mlx, double angle, char axis);
 void	destroy_img(t_mlx *mlx);
 void	init_img(t_mlx *mlx);
+t_mlx   *init_mlx(t_map *map);
 void bresenham(t_point *p1, t_point *p2, t_mlx *mlx);
 void	control_events(t_mlx *mlx);
 void mlx_free(t_mlx *mlx);

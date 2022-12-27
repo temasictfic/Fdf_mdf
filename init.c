@@ -29,6 +29,25 @@ void	init_map_transform(t_mlx *mlx)
 	map_scale(mlx, scale);
 }
 
+t_mlx   *init_mlx(t_map *map)
+{
+    t_mlx *mlx;
+
+    mlx = malloc(sizeof(t_mlx));
+
+    mlx->mlx = mlx_init();
+
+    mlx->window=mlx_new_window(mlx->mlx,WIN_WIDTH, WIN_HEIGHT, "Fdf");
+
+    init_img(mlx);
+
+    mlx->map = map;
+
+    init_map_transform(mlx);
+
+    return(mlx);
+    
+}
 
 /*#include "fdf.h"
 

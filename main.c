@@ -31,16 +31,18 @@ void mlx_free(t_mlx *mlx)
 int main(int argc, char** argv)
 {
     t_mlx *mlx;
-    int y = 0;
-    int x = 0;
+    t_map *map;
+
+    //int y = 0;
+    //int x = 0;
 
     if (argc != 2)
         exit_with_msg(USG_ERR);
-    mlx = malloc(sizeof(t_mlx));
-    mlx->mlx = mlx_init();
-    mlx->map = parse_map_file(argv[1]);
-    //mlx->window = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "Fdf");
+
+    map = parse_map_file(argv[1]);
+    mlx = init_mlx(map);
     
+    /*
     while(mlx->map->height > y)
     {
         x = 0;
@@ -51,13 +53,13 @@ int main(int argc, char** argv)
         }
         printf("\n");
         y++;
-    }
+    }*/
     
     //printf("SSSSSSSS");
     //init_map_transform(mlx);
-    //draw(mlx);   
-    //control_events(mlx);
-    //mlx_loop(mlx->mlx);
+    draw(mlx);   
+    control_events(mlx);
+    mlx_loop(mlx->mlx);
     return (0);
 }
 

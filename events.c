@@ -93,6 +93,6 @@ void	control_events(t_mlx *mlx)
 	mlx_hook(mlx->window, EVENT_ON_MOUSEDOWN, NO_MASK, mouse_down_hook, mlx);
 	mlx_hook(mlx->window, EVENT_ON_MOUSEMOVE, NO_MASK, mouse_move_hook, mlx);
 	mlx_hook(mlx->window, EVENT_ON_MOUSEUP, NO_MASK, mouse_up_hook, mlx);
-	init_img(mlx);
-	draw(mlx);
+	//init_img(mlx);
+	//draw(mlx);
 }
